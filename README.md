@@ -29,6 +29,6 @@ This is a web application for an online seed market place where users can browse
 5. Start the server: `npm start`
 6. Open your browser and visit: `http://localhost:8888`
 
-** Author 
+## Author 
 Saloni Pawar
 

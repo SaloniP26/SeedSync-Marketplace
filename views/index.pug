@@ -1,0 +1,53 @@
+extends layout
+
+block layout-content
+
+  // Jumbotron
+  .jumbotron.jumbotron-fluid.text-center
+    .container
+      h1.display-4 Welcome to Seed Marketplace
+      p.lead Find the best seeds for your farm.
+      .jumbotron-background
+
+  // Featured Products
+  .container.mt-4
+    h2.mb-4 Featured Products
+    .row
+      // Product 1
+      .col-lg-4.mb-4
+        .card
+          img.card-img-top(src="/images/vegetable.jpg", alt="Product 1")
+          .card-body
+            h5.card-title 
+                strong Vegetable Seeds
+            p.card-text
+            a.btn.btn-primary(href="/vegetableseeds") View More
+      // Product 2
+      .col-lg-4.mb-4
+        .card
+          img.card-img-top(src="/images/fruit.jpg", alt="Product 2")
+          .card-body
+            h5.card-title 
+                strong Fruit Seeds
+            p.card-text 
+            a.btn.btn-primary(href="/fruitseeds") View More
+      // Product 3
+      .col-lg-4.mb-4
+        .card
+          img.card-img-top(src="/images/flower.jpg", alt="Product 3")
+          .card-body
+            h5.card-title 
+                strong Flower Seeds
+            p.card-text
+            a.btn.btn-primary(href="#") View More
+
+    // Subscribe Section
+    .section.subscribe-section
+    .container
+        .subscribe-content
+        h2 Subscribe to Our Newsletter
+        p Join our newsletter for updates, promotions, and gardening tips!
+        form.subscribe-form(action="/subscriber" method="POST")
+            input(type="email" name="email" placeholder="Your email address" required)
+            button.btn.btn-primary(type="submit") Subscribe
+

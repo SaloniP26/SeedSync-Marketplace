@@ -1,0 +1,42 @@
+extends layout
+
+block layout-content
+
+  .container
+    h1.mt-5.mb-4 Our Vegetable Seed Products
+    .row
+      each product in vegetableseeds
+        .col-lg-4
+          .card.mb-3
+            img.card-img-top(src=`${product.image}`, alt=`${product.name}`)
+            .card-body
+              h5.card-title #{product.name}
+              p.card-text Price: $#{product.price}
+              a.btn.btn-primary(href="#") Buy
+
+    // Add Vegetable Button
+    button(type="button", data-toggle="modal", data-target="#addVegetableModal") Add Vegetable
+
+    // Popup Modal for Adding Vegetable
+    #addVegetableModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="addVegetableModalLabel", aria-hidden="true")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header
+            h5#addVegetableModalLabel.modal-title Add New Vegetable
+            button.close(type="button", data-dismiss="modal", aria-label="Close")
+              span(aria-hidden="true") ×
+          .modal-body
+            // Form for Adding Vegetable
+            form#addVegetableForm
+              .form-group
+                label(for="vegetableName") Name:
+                input#vegetableName(type="text", placeholder="Enter name")
+              .form-group
+                label(for="vegetableImage") Image URL:
+                input#vegetableImage(type="text", placeholder="Enter image URL")
+              .form-group
+                label(for="vegetablePrice") Price:
+                input#vegetablePrice(type="number", placeholder="Enter price")
+          .modal-footer
+            button(type="button", data-dismiss="modal") Close
+            button#saveVegetable(type="button" data-dismiss="modal") Save

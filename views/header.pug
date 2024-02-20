@@ -1,0 +1,17 @@
+header#header.site-header
+  div.header-content
+    img.logo(src="images/logo.png", alt="Logo")
+    h2#site-name Seed Marketplace
+    nav#main-navigation
+      ul
+        each link in menu
+          if link.name === 'Products'
+            li.dropdown
+              a.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") #{link.name}
+              ul.dropdown-menu
+                each seed in products
+                    li
+                        a.dropdown-item(href=seed.path) #{seed.name}
+          else
+            li
+              a(href=link.path)= link.name

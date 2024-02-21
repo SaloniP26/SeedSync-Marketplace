@@ -9,35 +9,12 @@ block layout-content
       each product in fruitseeds
         .col-lg-4
           .card.mb-3
-            img.card-img-top(src=`${product.image}`, alt=`${product.name}`)
+            img.card-img-top(src=`/images/${product.image}`, alt=`${product.name}`, style="height: 200px;")
             .card-body
               h5.card-title #{product.name}
               p.card-text Price: $#{product.price}
               a.btn.btn-primary(href="#" role="button") Buy
 
     // Add Fruit Button
-    button(type="button", data-toggle="modal", data-target="#addVegetableModal") Add Fruit Seed
+    a.btn.btn-primary(href="/additem") Add Fruit Seed
 
-    // Popup Modal for Adding Fruit
-    #addVegetableModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="addVegetableModalLabel", aria-hidden="true")
-      .modal-dialog(role="document")
-        .modal-content
-          .modal-header
-            h5#addVegetableModalLabel.modal-title Add New Fruit
-            button.close(type="button", data-dismiss="modal", aria-label="Close")
-              span(aria-hidden="true") ×
-          .modal-body
-            // Form for Adding Fruit
-            form#addVegetableForm
-              .form-group
-                label(for="vegetableName") Name:
-                input#vegetableName(type="text", placeholder="Enter name")
-              .form-group
-                label(for="vegetableImage") Image URL:
-                input#vegetableImage(type="text", placeholder="Enter image URL")
-              .form-group
-                label(for="vegetablePrice") Price:
-                input#vegetablePrice(type="number", placeholder="Enter price")
-          .modal-footer
-            button(type="button", data-dismiss="modal") Close
-            button#saveVegetable(type="button" data-dismiss="modal") Save

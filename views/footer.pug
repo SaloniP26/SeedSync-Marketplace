@@ -4,11 +4,16 @@ footer#footer.site-footer
       .col-md-4
         h4 About Us
         p We aim to provide the best quality seeds for farmers and gardening enthusiasts. Our mission is to support sustainable agriculture and promote healthy food production.
+        img.logo(src="images/logo.png", alt="Logo")
       .col-md-4
         h4 Quick Links
         ul
           li
-            a(href="/products") Products
+            h6 Products 
+            ul.dropdown-menu
+            each seed in products
+                    li
+                        a.dropdown(href=seed.path) #{seed.name}
           li
             a(href="/about") About Us
           li

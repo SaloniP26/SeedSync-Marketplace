@@ -42,6 +42,20 @@ app.get("/fruitseeds", async (request, response) => {
     response.render("fruitseeds", { title: "Fruit Seeds", menu: links, products: products, fruitseeds: fruit });
   });
 
+// app.get("/additem", async (request, response) => {
+//     let links = await getLinks();
+//     let products = await getProducts();
+//     response.render("additem", { title: "Add Item", menu: links, products: products });
+//     response.send('Item added successfully!');
+//   });
+
+app.get("/additem", async (request, response) => {
+    let links = await getLinks();
+    let products = await getProducts();
+    response.render("additem", { title: "Add Item", menu: links, products: products });
+});
+
+
 app.get("/vegetableseeds", async (request, response) => {
     let links = await getLinks();
     let products = await getProducts();
@@ -96,8 +110,35 @@ app.post("/admin/menu/add/submit", async (request, response) => {
   response.redirect("/admin/menu"); //redirect back to Administer menu page
 })
 
+app.post("/additem", async (request, response) => {
+  let name = request.body.title;
+  let image = request.body.image;
+  let price = request.body.price;
+  let category = request.body.seed;
+
+  let newItem = {
+      "name": name,
+      "image": image,
+      "price": price
+  };
+
+  let collectionName = ""; 
+    switch (category) {
+      case "Fruit Seeds":
+        collectionName = "fruitseeds";
+        break;
+      case "Vegetable Seeds":
+        collectionName = "vegetableseeds";
+        break;
+        default:
+        break;
+      };
+      await addItem(newItem,collectionName)
+      response.redirect(`/${collectionName}`)
+});
+
+
 app.post("/subscriber", async (request, response) => {
-    // Retrieve email from the submitted POST form
     let email = request.body.email;
     let newemail = {
         "emailid": email
@@ -154,6 +195,13 @@ async function getVegetableSeeds() {
     return res;
   }
 
+  async function getFruitSeeds() {
+    db = await connection();
+    let results = db.collection("fruitseeds").find({});
+    let res = await results.toArray();
+    return res;
+  }
+
 async function getProducts() {
     db = await connection();
     let results = await db.collection("products").find({});
@@ -173,7 +221,13 @@ async function addemail(subscriberData) {
     db = await connection();
     let status = await db.collection("subscriber").insertOne(subscriberData);
     console.log("subscriber added");
-  }
+}
+
+async function addItem(itemData, collectionName) {
+    db = await connection();
+    let status = await db.collection(collectionName).insertOne(itemData);
+    console.log("Item added");
+}
 
 async function getSingleLink(id) {
         db = await connection();

@@ -251,6 +251,10 @@ footer {
   .dropdown-menu li a:hover {
     background-color: #f0f0f0;
   }
+
+  .dropdown {
+    color: #fff;
+  }
   
   ul, ol {
     list-style-type: none;
@@ -262,87 +266,11 @@ footer {
     border-color:#174c1f;
   }
 
-#addVegetableModal {
-    display: none;
-    z-index: 1050;
-  }
-  
-  #addVegetableModal .modal-content {
-    position: relative;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3rem;
-    outline: 0;
-  }
-  
-  #addVegetableModal .modal-header {
-    padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
-  }
-  
-  #addVegetableModal .modal-body {
-    position: relative;
-    padding: 1rem;
-  }
-  
-  #addVegetableModal .modal-title {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-  
-  #addVegetableModal .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
-    border-top: 1px solid #e9ecef;
-  }
-
-  #addVegetableModal .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1rem;
-    color: #000;
-  }
-  
-  #addVegetableModal .form-group {
-    margin-bottom: 1rem;
-  }
-
-  #addVegetableModal input[type="text"],
-  #addVegetableModal input[type="number"] {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-
-  #addVegetableModal button.close {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-  }
-
-  #addVegetableModal button#saveVegetable {
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    background-color: #007bff;
-    border: none;
-    border-radius: 0.25rem;
+  .btn-add-item {
+    background-color: #174c1f;
     color: #fff;
-    cursor: pointer;
+    border-color:#174c1f;
   }
-  
-  #addVegetableModal button#saveVegetable:hover {
-    background-color: #0056b3;
-  }
-  
-  button[data-target="#addVegetableModal"] {
-    margin-top: 1rem;
-  }
-  
-  
   
   
   

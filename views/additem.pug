@@ -1,0 +1,28 @@
+extends layout
+
+block layout-content
+    .container
+        h1 Add items to list 
+
+        form#add-item-form(action="/additem", method="POST")
+
+            .input-field-container
+                label(for="itemTitle") Item Name : 
+                input(type='text', name='title', id='itemTitle')
+
+            .input-field-container
+                label(for="image") Image : 
+                input(type='text', name='image', id='image', placeholder='Paste link to the image')
+
+            .input-field-container
+                label(for="price") Price : 
+                input(type='number', name='price', id='itemPrice')
+                
+            .input-field-container
+                label(for="itemCategory") Add category
+                select(name="seed", id="itemCategory")
+                    each seed in products
+                        option(value=seed.name) #{seed.name} 
+
+            .input-field-container
+                input.btn-add-item(type="submit", value="Add item to menu")
